@@ -6,6 +6,12 @@ class PlacesController < ApplicationController
     # render places/index view
   end
 
+  def show
+        @place = Place.find_by({"id" => params["id"]})
+  
+        @posts = Post.where({"place_id" => @place["id"]})
+  end
+
   def new
     @place = Place.new 
   end
@@ -19,13 +25,6 @@ class PlacesController < ApplicationController
     redirect_to "/places"
 
   end
-
-  def show
-
-    
-  end
-  
-
 
 end
 
